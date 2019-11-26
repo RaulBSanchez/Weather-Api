@@ -13,17 +13,18 @@ window.addEventListener('load', ()=> {
 			const proxy = "https://cors-anywhere.herokuapp.com/";
 			const api = `${proxy}https://api.darksky.net/forecast/0570cf6dbdb6a39786cf0a6623d3709b/${lat},${long}`;
 	
-	fetch(api)
-		.then(data => {
-			return response.json();
-		})
-		.then(data => {
-			
-			const { temperature, summary } = data.currently;
-			// Set DOM elements from the api
-			temperatureDegree.textContent = temperature;
-			temperatureDescription = summary; 
-			locationTimezone.textContent = data.timezone;
+		fetch(api)
+			.then(response => {
+				return response.json();
+			})
+			.then(data => {
+
+				console.log(data);
+				const { temperature, summary } = data.currently;
+				// Set DOM elements from the api
+				temperatureDegree.textContent = temperature;
+				temperatureDescription = summary; 
+				locationTimezone.textContent = data.timezone;
 
 		});
 	 });
